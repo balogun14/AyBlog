@@ -19,4 +19,4 @@ class Blog(models.Model):
         return reverse("blog_detail", kwargs={"pk": self.pk})
 
     def img_preview(self):
-        return mark_safe('<img src="{url}" width="300" />'.format(url=self.image.url))
+        return mark_safe('<img src="{url}" width="200" />'.format(url=self.image.url))
