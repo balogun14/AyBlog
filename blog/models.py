@@ -1,10 +1,7 @@
-from django.dispatch import receiver
-from django.utils.text import slugify
 from django.db import models
 from django.urls import reverse
 from django.utils.html import mark_safe
-from django.db.models.signals import pre_save
-
+from tinymce.models import HTMLField
 # Create your models here.
 
 
@@ -17,7 +14,7 @@ class Blog(models.Model):
     ]
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
-    body = models.TextField()
+    body = HTMLField()
     category = models.CharField(max_length=2, choices=Categories)
     author = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     image = models.ImageField(upload_to="blog")
