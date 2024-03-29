@@ -1,10 +1,3 @@
-from multiprocessing import context
-from typing import Any
-from unicodedata import category
-from xml.dom import NotFoundErr
-from django.db.models.query import QuerySet
-from django.http import HttpResponse
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from .models import Blog
@@ -27,23 +20,33 @@ class BlogDetailView(DetailView):
         return blog
 
 
-class CategoryListView(ListView):
-    context_object_name = "blog_list"
-    template_name = "category.html"
+class EducationListView(ListView):
+    template_name = "education.html"
 
     def get_queryset(self):
-        category = Blog.objects.all()
-        match self.kwargs["category"]:
-            case "education":
-                category = category.filter(category="education")
-                return category
-            case "politics":
-                category = category.filter(category="politics")
-                return category
-            case "food":
-                category = category.filter(category="food")
-                return category
-            case "motivation":
-                category = category.filter(category="motivation")
-                return category
-        return HttpResponse("""The requested URl does not Exist Not Found""")
+        education = Blog.objects.filter(category__exact="EN")
+        return education
+
+
+class PoliticsListView(ListView):
+    template_name = "politics.html"
+
+    def get_queryset(self):
+        politics = Blog.objects.filter(category="Politics")
+        return politics
+
+
+class FoodListView(ListView):
+    template_name = "food.html"
+
+    def get_queryset(self):
+        food = Blog.objects.filter(category="Food")
+        return food
+
+
+class MotivationListView(ListView):
+    template_name = "motivation.html"
+
+    def get_queryset(self):
+        motivation = Blog.objects.filter(category="Motivation")
+        return motivation
