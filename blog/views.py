@@ -22,7 +22,7 @@ class BlogDetailView(DetailView):
 
 class EducationListView(ListView):
     template_name = "education.html"
-
+    context_object_name = "education"
     def get_queryset(self):
         education = Blog.objects.filter(category__exact="EN")
         return education
@@ -30,7 +30,7 @@ class EducationListView(ListView):
 
 class PoliticsListView(ListView):
     template_name = "politics.html"
-
+    context_object_name = "politics"
     def get_queryset(self):
         politics = Blog.objects.filter(category="Politics")
         return politics
@@ -38,7 +38,7 @@ class PoliticsListView(ListView):
 
 class FoodListView(ListView):
     template_name = "food.html"
-
+    context_object_name = "food"
     def get_queryset(self):
         food = Blog.objects.filter(category="Food")
         return food
@@ -46,7 +46,7 @@ class FoodListView(ListView):
 
 class MotivationListView(ListView):
     template_name = "motivation.html"
-
+    context_object_name = "motivation"
     def get_queryset(self):
         motivation = Blog.objects.filter(category="Motivation")
         return motivation

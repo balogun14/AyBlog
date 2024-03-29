@@ -1,23 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
   <!-- Page content -->
-
   <div class="container">
     <div class="row gx-5">
       <div class="col-sm-12 col-md-12 col-lg-8">
         {% for blog in blog_list %}
           <div class="grid-container">
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-lg-6">
-                {% comment %} <p class="text-capitalize fs-6">{{ blog.body|safe| }}</p> {% endcomment %}
-              </div>
-              <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
-                  <img src="{{ blog.image.url }}" alt="Img" class="rounded ms-3 mb-2 me-5" height="250" width="250" style="object-fit: cover;object-position: center;" />
-
+                  <img src="{{ blog.image.url }}" alt="Img" class="rounded ms-3 mb-2 me-5" height="300" width="300" style="object-fit:cover;object-position: center;" />
                   <h4><a href="{% url 'detail' blog.slug %}">{{ blog.title }}</a></h4>
-                  <p class="h6">written by {{ blog.author }}</p>
-                  <p>{{ blog.date_created }}</p>
                 </div>
               </div>
             </div>

@@ -16,18 +16,21 @@ a:hover {
     color: #008080 !important;
 }
 
-.grid-container {
-    /* background-color: brown; */
-}
 
 
-.sidebar{
+.sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column nowrap;
-    background-color: #333333;
+    background-color: #74717183;
     height: 100vh;
     gap: 20px;
+}
 
+
+@media screen and (min-width: 500px) {
+    .sidebar {
+        visibility: hidden;
+    }
 }
