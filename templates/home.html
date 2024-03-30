@@ -1,30 +1,173 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
   <!-- Page content -->
-  <div class="container">
-    <div class="row gx-5">
-      <div class="col-sm-12 col-md-12 col-lg-8">
+  <section class="section lb">
+    <div class="container">
+      <div class="row">
+        <!-- end col -->
+
         {% for blog in blog_list %}
-          <div class="grid-container">
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="row">
-                  <img src="{{ blog.image.url }}" alt="Img" class="rounded ms-3 mb-2 me-5" height="300" width="300" style="object-fit:cover;object-position: center;" />
-                  <h4><a href="{% url 'detail' blog.slug %}">{{ blog.title }}</a></h4>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
+          <div class="page-wrapper d-flex flex-column align-items-center">
+            <div class="blog-custom-build">
+              <div class="blog-box wow fadeIn">
+                <div class="post-media">
+                  <a href="{% url 'detail' blog.slug %}" title="">
+                    <img src="{{blog.image.url}}" alt="" class="img-fluid"/>
+                    <div class="hovereffect">
+                      <span></span>
+                    </div>
+                    <!-- end hover -->
+                  </a>
+                </div>
+                <!-- end media -->
+                {% comment %} <div class="blog-meta big-meta text-center">
+                  <div class="post-sharing">
+                    <ul class="list-inline">
+                      <li>
+                        <a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a>
+                      </li>
+                      <li>
+                        <a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a>
+                      </li>
+                    </ul>
+                  </div> {% endcomment %}
+                  <!-- end post-sharing -->
+                  <h4><a href="{% url 'detail' blog.slug %}" title="">{{ blog.title }}</a></h4>
+                  <p>{{blog.body|truncatewords:50|safe}}</p>
+                  <small><a href="" title="">{{ blog.date_created}}</a></small>
+                  <small><a href="" title="">{{ blog.author }}</a></small>
+                </div>
+                <!-- end meta -->
+              </div>
+              <!-- end blog-box -->
+              <hr class="invis" />
+              {% endfor %}
+              <!-- end blog-box -->
+              <div class="row">
+            <div class="col-md-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div><!-- end col -->
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="sidebar">
+            <div class="widget">
+              <h2 class="widget-title">Recent Posts</h2>
+              <div class="blog-list-widget">
+                <div class="list-group">
+                  <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="w-100 justify-content-between">
+                      <img src="{% static 'img/upload/small_07.jpg' %}" alt="" class="img-fluid float-left" />
+                      <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
+                      <small>12 Jan, 2016</small>
+                    </div>
+                  </a>
+
+                  <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="w-100 justify-content-between">
+                      <img src="{% static 'img/upload/small_08.jpg' %}" alt="" class="img-fluid float-left" />
+                      <h5 class="mb-1">Let's make an introduction for creative life</h5>
+                      <small>11 Jan, 2016</small>
+                    </div>
+                  </a>
+
+                  <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="w-100 last-item justify-content-between">
+                      <img src="{% static 'img/upload/small_09.jpg' %}" alt="" class="img-fluid float-left" />
+                      <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
+                      <small>07 Jan, 2016</small>
+                    </div>
+                  </a>
                 </div>
               </div>
+              <!-- end blog-list -->
             </div>
+            <!-- end widget -->
+
+            <div id="" class="widget">
+              <h2 class="widget-title">Advertising</h2>
+              <div class="banner-spot clearfix">
+                <div class="banner-img">
+                  <img src="{% static 'img/upload/banner_03.jpg' %}" alt="" class="img-fluid" />
+                </div>
+                <!-- end banner-img -->
+              </div>
+              <!-- end banner -->
+            </div>
+            <!-- end widget -->
+
+            <div class="widget">
+              <h2 class="widget-title">Instagram Feed</h2>
+              <div class="instagram-wrapper clearfix">
+                <a class="" href="#"><img src="{% static 'img/upload/small_09.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_01.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_02.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_03.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_04.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_05.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_06.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_07.jpg' %}" alt="" class="img-fluid" /></a>
+                <a href="#"><img src="{% static 'img/upload/small_08.jpg' %}" alt="" class="img-fluid" /></a>
+              </div>
+              <!-- end Instagram wrapper -->
+            </div>
+            <!-- end widget -->
+
+            <div class="widget">
+              <h2 class="widget-title">Popular Categories</h2>
+              <div class="link-widget">
+                <ul>
+                  <li>
+                    <a href="#">Marketing <span>(21)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">SEO Service <span>(15)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">Digital Agency <span>(31)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">Make Money <span>(22)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">Blogging <span>(66)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">Entertaintment <span>(11)</span></a>
+                  </li>
+                  <li>
+                    <a href="#">Video Tuts <span>(87)</span></a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end link-widget -->
+            </div>
+            <!-- end widget -->
           </div>
-        {% endfor %}
-      </div>
-      <div class="col-lg-4">
-        <div class="sidebar">
-          <a class="" href="#home">Home</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
+          <!-- end sidebar -->
         </div>
-      </div>
-    </div>
-  </div>
+      </div><!-- end row -->
+    </div> <!-- end container -->
+  </section>
 {% endblock %}
+</body>
+</html>
